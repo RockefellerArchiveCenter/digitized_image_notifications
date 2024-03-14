@@ -1,0 +1,23 @@
+{
+	"@type": "MessageCard",
+	"@context": "http://schema.org/extensions",
+	"themeColor": "#ff0000",
+	"summary": "BagIt validation failed.",
+	"sections": [{
+		"activityTitle": "video package 20f8da26e268418ead4aa2365f816a08 failed validation.",
+		"text": "BagIt validation failed.",
+		"facts": [{
+			"name": "Service",
+			"value": "validation"
+		}, {
+			"name": "Outcome",
+			"value": "failure"
+		}, {
+			"name": "Format",
+			"value": "video"
+		}, {
+			"name": "RefID",
+			"value": "20f8da26e268418ead4aa2365f816a08"
+		}]
+	}]
+}

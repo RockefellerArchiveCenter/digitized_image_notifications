@@ -1,0 +1,23 @@
+{
+	"@type": "MessageCard",
+	"@context": "http://schema.org/extensions",
+	"themeColor": "#008000",
+	"summary": "Summary",
+	"sections": [{
+		"activityTitle": "video package 20f8da26e268418ead4aa2365f816a08 successfully validated.",
+		"text": "Summary",
+		"facts": [{
+			"name": "Service",
+			"value": "validation"
+		}, {
+			"name": "Outcome",
+			"value": "success"
+		}, {
+			"name": "Format",
+			"value": "video"
+		}, {
+			"name": "RefID",
+			"value": "20f8da26e268418ead4aa2365f816a08"
+		}]
+	}]
+}
