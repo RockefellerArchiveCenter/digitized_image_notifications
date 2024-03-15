@@ -7,13 +7,14 @@ from unittest.mock import patch
 import boto3
 from moto import mock_ssm
 
-from src.handle_digitized_av_notifications import (get_config, lambda_handler,
-                                                   structure_teams_message)
+from src.handle_digitized_image_notifications import (get_config,
+                                                      lambda_handler,
+                                                      structure_teams_message)
 
 
-@patch('src.handle_digitized_av_notifications.structure_teams_message')
-@patch('src.handle_digitized_av_notifications.get_config')
-@patch('src.handle_digitized_av_notifications.send_teams_message')
+@patch('src.handle_digitized_image_notifications.structure_teams_message')
+@patch('src.handle_digitized_image_notifications.get_config')
+@patch('src.handle_digitized_image_notifications.send_teams_message')
 def test_success_notification(mock_send, mock_config, mock_structure):
     with open(Path('tests', 'fixtures', 'success_message.json'), 'r') as jf:
         message = json.load(jf)
@@ -29,9 +30,9 @@ def test_success_notification(mock_send, mock_config, mock_structure):
         mock_send.assert_called_once()
 
 
-@patch('src.handle_digitized_av_notifications.structure_teams_message')
-@patch('src.handle_digitized_av_notifications.get_config')
-@patch('src.handle_digitized_av_notifications.send_teams_message')
+@patch('src.handle_digitized_image_notifications.structure_teams_message')
+@patch('src.handle_digitized_image_notifications.get_config')
+@patch('src.handle_digitized_image_notifications.send_teams_message')
 def test_failure_notification(mock_send, mock_config, mock_structure):
     with open(Path('tests', 'fixtures', 'failure_message.json'), 'r') as jf:
         message = json.load(jf)

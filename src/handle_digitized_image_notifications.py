@@ -20,15 +20,15 @@ full_config_path = f"/{environ.get('ENV')}/{environ.get('APP_CONFIG_PATH')}"
 def parse_attributes(attributes):
     """Parses attributes from messages."""
     color_name = '#ff0000' if attributes['outcome']['Value'] == 'FAILURE' else '#008000'
-    format = attributes['format']['Value']
     refid = attributes['refid']['Value']
     service = attributes['service']['Value']
     outcome = attributes['outcome']['Value'].lower()
     message = attributes.get('message', {}).get('Value')
-    return color_name, format, refid, service, outcome, message
+    return color_name, refid, service, outcome, message
 
 
 def structure_teams_message(color_name, title, message, facts):
+    # TODO convert to AdaptiveCard
     """Structures Teams message using arguments."""
     notification = {
         "@type": "MessageCard",
@@ -91,12 +91,12 @@ def lambda_handler(event, context):
 
     title = event['Records'][0]['Sns']['Message']
     attributes = event['Records'][0]['Sns']['MessageAttributes']
-    color_name, format, refid, service, outcome, message = parse_attributes(
+    color_name, refid, service, outcome, message = parse_attributes(
         attributes)
     structured_message = structure_teams_message(
         color_name,
         title,
         message,
-        {'Service': service, 'Outcome': outcome, 'Format': format, 'RefID': refid})
+        {'Service': service, 'Outcome': outcome, 'RefID': refid})
     decrypted_url = config.get('TEAMS_URL')
     send_teams_message(structured_message, decrypted_url)
