@@ -1,15 +1,15 @@
-# digitized_av_notifications
-Handles notifications for validation and packaging of incoming digitized audiovisual assets.
+# digitized_image_notifications
+Handles notifications for validation and packaging of incoming digitized still image and textual assets.
 
-[![Build Status](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_av_notifications.svg?branch=base)](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_av_notifications)
+[![Build Status](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_image_notifications.svg?branch=base)](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_image_notifications)
 
 ## Getting Started
 
 With [git](https://git-scm.com/) installed, pull down the source code and move into the newly created directory:
 
 ```
-git clone https://github.com/RockefellerArchiveCenter/digitized_av_notifications.git
-cd digitized_av_notifications
+git clone https://github.com/RockefellerArchiveCenter/digitized_image_notifications.git
+cd digitized_image_notifications
 ```
 
 ## Usage
@@ -19,7 +19,6 @@ This repository is intended to be deployed as a Lambda script in AWS infrastruct
 ### Expected Message Format
 
 The script is designed to consume message from an AWS Simple Notifications Service (SNS) queue. These messages are expected have the following attributes:
-- `format` - the format of the package (audio or video)
 - `refid` - the ArchivesSpace refid associated with the package
 - `service` - the service which produced the message
 - `outcome` - the outcome of the service (usually `SUCCESS` or `FAILURE`, but may also be `COMPLETE`)
