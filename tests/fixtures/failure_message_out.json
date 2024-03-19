@@ -1,23 +1,47 @@
 {
-	"@type": "MessageCard",
-	"@context": "http://schema.org/extensions",
-	"themeColor": "#ff0000",
-	"summary": "BagIt validation failed.",
-	"sections": [{
-		"activityTitle": "video package 20f8da26e268418ead4aa2365f816a08 failed validation.",
-		"text": "BagIt validation failed.",
-		"facts": [{
-			"name": "Service",
-			"value": "validation"
-		}, {
-			"name": "Outcome",
-			"value": "failure"
-		}, {
-			"name": "Format",
-			"value": "video"
-		}, {
-			"name": "RefID",
-			"value": "20f8da26e268418ead4aa2365f816a08"
-		}]
-	}]
+	"type": "message",
+	"attachments": [
+		{
+			"contentType": "application/vnd.microsoft.card.adaptive",
+			"contentUrl": null,
+			"content": {
+				"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+				"type": "AdaptiveCard",
+				"version": "1.5",
+				"body": [
+					{
+						"type": "TextBlock",
+						"size": "default",
+						"weight": "bolder",
+						"text": "package 20f8da26e268418ead4aa2365f816a08 failed validation.",
+						"style": "heading",
+						"wrap": true,
+						"color": "attention"
+					},
+					{
+						"type": "TextBlock",
+						"text": "BagIt validation failed.",
+						"wrap": true
+					},
+					{
+						"type": "FactSet",
+						"facts": [
+							{
+								"title": "Service",
+								"value": "validation"
+							},
+							{
+								"title": "Outcome",
+								"value": "failure"
+							},
+							{
+								"title": "RefID",
+								"value": "20f8da26e268418ead4aa2365f816a08"
+							}
+						]
+					}
+				]
+			}
+		}
+	]
 }

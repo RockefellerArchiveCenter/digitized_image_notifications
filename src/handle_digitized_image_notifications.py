@@ -19,7 +19,7 @@ full_config_path = f"/{environ.get('ENV')}/{environ.get('APP_CONFIG_PATH')}"
 
 def parse_attributes(attributes):
     """Parses attributes from messages."""
-    color_name = '#ff0000' if attributes['outcome']['Value'] == 'FAILURE' else '#008000'
+    color_name = 'attention' if attributes['outcome']['Value'] == 'FAILURE' else 'good'
     refid = attributes['refid']['Value']
     service = attributes['service']['Value']
     outcome = attributes['outcome']['Value'].lower()

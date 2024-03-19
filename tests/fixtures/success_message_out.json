@@ -1,23 +1,47 @@
 {
-	"@type": "MessageCard",
-	"@context": "http://schema.org/extensions",
-	"themeColor": "#008000",
-	"summary": "Summary",
-	"sections": [{
-		"activityTitle": "video package 20f8da26e268418ead4aa2365f816a08 successfully validated.",
-		"text": "Summary",
-		"facts": [{
-			"name": "Service",
-			"value": "validation"
-		}, {
-			"name": "Outcome",
-			"value": "success"
-		}, {
-			"name": "Format",
-			"value": "video"
-		}, {
-			"name": "RefID",
-			"value": "20f8da26e268418ead4aa2365f816a08"
-		}]
-	}]
+	"type": "message",
+	"attachments": [
+		{
+			"contentType": "application/vnd.microsoft.card.adaptive",
+			"contentUrl": null,
+			"content": {
+				"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+				"type": "AdaptiveCard",
+				"version": "1.5",
+				"body": [
+					{
+						"type": "TextBlock",
+						"size": "default",
+						"weight": "bolder",
+						"text": "package 20f8da26e268418ead4aa2365f816a08 successfully validated.",
+						"style": "heading",
+						"wrap": true,
+						"color": "good"
+					},
+					{
+						"type": "TextBlock",
+						"text": null,
+						"wrap": true
+					},
+					{
+						"type": "FactSet",
+						"facts": [
+							{
+								"title": "Service",
+								"value": "validation"
+							},
+							{
+								"title": "Outcome",
+								"value": "success"
+							},
+							{
+								"title": "RefID",
+								"value": "20f8da26e268418ead4aa2365f816a08"
+							}
+						]
+					}
+				]
+			}
+		}
+	]
 }
