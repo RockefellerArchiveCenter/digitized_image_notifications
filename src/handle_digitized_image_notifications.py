@@ -28,18 +28,41 @@ def parse_attributes(attributes):
 
 
 def structure_teams_message(color_name, title, message, facts):
-    # TODO convert to AdaptiveCard
     """Structures Teams message using arguments."""
     notification = {
-        "@type": "MessageCard",
-        "@context": "http://schema.org/extensions",
-        "themeColor": color_name,
-        "summary": message if message else 'Summary',
-        "sections": [{
-            "activityTitle": title,
-            "text": message if message else 'Summary',
-            "facts": [{"name": k, "value": v} for k, v in facts.items()]
-        }]}
+        "type": "message",
+        "attachments": [
+            {
+                "contentType": "application/vnd.microsoft.card.adaptive",
+                "contentUrl": None,
+                "content": {
+                    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                    "type": "AdaptiveCard",
+                    "version": "1.5",
+                    "body": [
+                        {
+                            "type": "TextBlock",
+                            "size": "default",
+                            "weight": "bolder",
+                            "text": title,
+                            "style": "heading",
+                            "wrap": True,
+                            "color": color_name
+                        },
+                        {
+                            "type": "TextBlock",
+                            "text": message,
+                            "wrap": True
+                        },
+                        {
+                            "type": "FactSet",
+                            "facts": [{"title": k, "value": v} for k, v in facts.items()]
+                        }
+                    ]
+                }
+            }
+        ]
+    }
     return json.dumps(notification).encode('utf-8')
 
 
