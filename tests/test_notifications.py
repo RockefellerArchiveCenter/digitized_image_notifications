@@ -23,6 +23,7 @@ def test_success_notification(mock_send, mock_config, mock_structure):
             'good',
             'package 20f8da26e268418ead4aa2365f816a08 successfully validated.',
             None,
+            None,
             {
                 'Service': 'validation',
                 'Outcome': 'success',
@@ -44,6 +45,7 @@ def test_failure_notification(mock_send, mock_config, mock_structure):
             'attention',
             'package 20f8da26e268418ead4aa2365f816a08 failed validation.',
             'BagIt validation failed.',
+            'Much longer traceback.',
             {
                 'Service': 'validation',
                 'Outcome': 'failure',
@@ -60,10 +62,16 @@ def test_structure_teams_message():
              ['attention',
               'package 20f8da26e268418ead4aa2365f816a08 failed validation.',
               'BagIt validation failed.',
+              'Much longer traceback.',
               {'Service': 'validation',
                'Outcome': 'failure',
                'RefID': '20f8da26e268418ead4aa2365f816a08'}]),
-            ('success_message_out.json', ['good', 'package 20f8da26e268418ead4aa2365f816a08 successfully validated.', None, {'Service': 'validation', 'Outcome': 'success', 'RefID': '20f8da26e268418ead4aa2365f816a08'}])]:
+            ('success_message_out.json',
+             ['good',
+              'package 20f8da26e268418ead4aa2365f816a08 successfully validated.',
+              None,
+              None,
+              {'Service': 'validation', 'Outcome': 'success', 'RefID': '20f8da26e268418ead4aa2365f816a08'}])]:
         with open(Path('tests', 'fixtures', fixture_path), 'r') as df:
             expected = json.load(df)
             output = structure_teams_message(*args)
