@@ -65,7 +65,7 @@ def structure_teams_message(color_name, title, message, traceback, facts):
         ]
     }
     if traceback:
-        notification['attachments'][0]['content']['body'].insert(-1, {
+        notification['attachments'][0]['content']['body'].append({
             "type": "TextBlock",
             "fontType": "Monospace",
             "text": traceback,
