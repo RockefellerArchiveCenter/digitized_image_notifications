@@ -77,8 +77,8 @@ def structure_teams_message(color_name, title, message, traceback, facts):
         ]
     }
     if facts['Outcome'] == 'started':
-        url = 'https://digitzed-image-qc.dev.rockarch.org' if environ.get(
-            'ENV') == 'dev' else 'https://digitzed-image-qc.rockarch.org'
+        url = 'https://digitized-image-qc.dev.rockarch.org' if environ.get(
+            'ENV') == 'dev' else 'https://digitized-image-qc.rockarch.org'
         notification['attachments'][0]['content']['actions'] = [
             {
                 "type": "Action.OpenUrl",
