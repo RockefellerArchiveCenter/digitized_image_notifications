@@ -13,7 +13,7 @@
 						"type": "TextBlock",
 						"size": "default",
 						"weight": "bolder",
-						"text": "package 20f8da26e268418ead4aa2365f816a08 successfully validated.",
+						"text": "No packages left to QC.",
 						"style": "heading",
 						"wrap": true,
 						"color": "good"
@@ -22,23 +22,6 @@
 						"type": "TextBlock",
 						"text": null,
 						"wrap": true
-					},
-					{
-						"type": "FactSet",
-						"facts": [
-							{
-								"title": "Service",
-								"value": "validation"
-							},
-							{
-								"title": "Outcome",
-								"value": "success"
-							},
-							{
-								"title": "RefID",
-								"value": "20f8da26e268418ead4aa2365f816a08"
-							}
-						]
 					}
 				]
 			}
