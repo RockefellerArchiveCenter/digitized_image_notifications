@@ -1,6 +1,7 @@
 language: python
+dist: jammy
 python:
-  - "3.12"
+  - "3.11"
 cache: pip
 env:
   global:

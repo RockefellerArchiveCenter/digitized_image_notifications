@@ -20,15 +20,47 @@ full_config_path = f"/{environ.get('ENV')}/{environ.get('APP_CONFIG_PATH')}"
 def parse_attributes(attributes):
     """Parses attributes from messages."""
     color_name = 'attention' if attributes['outcome']['Value'] == 'FAILURE' else 'good'
-    refid = attributes['refid']['Value']
+    refid = attributes.get('refid', {}).get('Value', None)
     service = attributes['service']['Value']
     outcome = attributes['outcome']['Value'].lower()
     message = attributes.get('message', {}).get('Value')
-    return color_name, refid, service, outcome, message
+    traceback = attributes.get('traceback', {}).get('Value')
+    return color_name, refid, service, outcome, message, traceback
 
 
-def structure_teams_message(color_name, title, message, facts):
+def structure_teams_message(color_name, title, message, traceback, facts):
     """Structures Teams message using arguments."""
+    body = [
+        {
+            "type": "TextBlock",
+                    "size": "default",
+                    "weight": "bolder",
+                    "text": title,
+                    "style": "heading",
+                    "wrap": True,
+                    "color": color_name
+        },
+        {
+            "type": "TextBlock",
+                    "text": message,
+                    "wrap": True
+        },
+
+    ]
+    if facts['RefID']:
+        body.append(
+            {
+                "type": "FactSet",
+                "facts": [{"title": k, "value": v} for k, v in facts.items()]
+            }
+        )
+    if traceback:
+        body.append({
+            "type": "TextBlock",
+            "fontType": "Monospace",
+            "text": traceback,
+            "wrap": True
+        })
     notification = {
         "type": "message",
         "attachments": [
@@ -39,30 +71,22 @@ def structure_teams_message(color_name, title, message, facts):
                     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
                     "type": "AdaptiveCard",
                     "version": "1.5",
-                    "body": [
-                        {
-                            "type": "TextBlock",
-                            "size": "default",
-                            "weight": "bolder",
-                            "text": title,
-                            "style": "heading",
-                            "wrap": True,
-                            "color": color_name
-                        },
-                        {
-                            "type": "TextBlock",
-                            "text": message,
-                            "wrap": True
-                        },
-                        {
-                            "type": "FactSet",
-                            "facts": [{"title": k, "value": v} for k, v in facts.items()]
-                        }
-                    ]
+                    "body": body
                 }
             }
         ]
     }
+    if facts['Outcome'] == 'started':
+        url = 'https://digitized-image-qc.dev.rockarch.org' if environ.get(
+            'ENV') == 'dev' else 'https://digitized-image-qc.rockarch.org'
+        notification['attachments'][0]['content']['actions'] = [
+            {
+                "type": "Action.OpenUrl",
+                "title": "Go to Cue See",
+                "url": url
+            }
+        ]
+
     return json.dumps(notification).encode('utf-8')
 
 
@@ -114,12 +138,19 @@ def lambda_handler(event, context):
 
     title = event['Records'][0]['Sns']['Message']
     attributes = event['Records'][0]['Sns']['MessageAttributes']
-    color_name, refid, service, outcome, message = parse_attributes(
+    color_name, refid, service, outcome, message, traceback = parse_attributes(
         attributes)
-    structured_message = structure_teams_message(
-        color_name,
-        title,
-        message,
-        {'Service': service, 'Outcome': outcome, 'RefID': refid})
-    decrypted_url = config.get('TEAMS_URL')
-    send_teams_message(structured_message, decrypted_url)
+    if (service == 'digitized_image_qc' and outcome in [
+            'started', 'complete']) or outcome == 'failure':
+        structured_message = structure_teams_message(
+            color_name,
+            title,
+            message,
+            traceback,
+            {
+                'Service': service,
+                'Outcome': outcome,
+                'RefID': refid,
+            })
+        decrypted_url = config.get('TEAMS_URL')
+        send_teams_message(structured_message, decrypted_url)
