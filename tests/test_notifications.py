@@ -115,7 +115,7 @@ def test_structure_teams_message():
         with open(Path('tests', 'fixtures', fixture_path), 'r') as df:
             expected = json.load(df)
             output = structure_teams_message(*args)
-            assert output == json.dumps(expected).encode('utf-8')
+            assert output == json.dumps(expected)
 
 
 @mock_ssm
