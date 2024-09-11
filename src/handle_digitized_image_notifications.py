@@ -70,7 +70,7 @@ def structure_teams_message(color_name, title, message, traceback, facts):
                 "content": {
                     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
                     "type": "AdaptiveCard",
-                    "version": "1.5",
+                    "version": "1.4",
                     "body": body
                 }
             }
@@ -87,12 +87,17 @@ def structure_teams_message(color_name, title, message, traceback, facts):
             }
         ]
 
-    return json.dumps(notification).encode('utf-8')
+    return json.dumps(notification)
 
 
 def send_teams_message(message, url):
     """Delivers message to Teams channel endpoint."""
-    response = http.request('POST', url, body=message)
+    response = http.request(
+        'POST',
+        url,
+        headers={
+            'Content-Type': 'application/json'},
+        body=message)
     logger.info('Status Code: {}'.format(response.status))
     logger.info('Response: {}'.format(response.data))
 
