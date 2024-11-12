@@ -1,8 +1,6 @@
 # digitized_image_notifications
 Handles notifications for validation and packaging of incoming digitized still image and textual assets.
 
-[![Build Status](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_image_notifications.svg?branch=base)](https://app.travis-ci.com/RockefellerArchiveCenter/digitized_image_notifications)
-
 ## Getting Started
 
 With [git](https://git-scm.com/) installed, pull down the source code and move into the newly created directory:
