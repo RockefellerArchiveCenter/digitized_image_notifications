@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import boto3
-from moto import mock_ssm
+from moto import mock_aws
 
 from src.handle_digitized_image_notifications import (get_config,
                                                       lambda_handler,
@@ -118,7 +118,7 @@ def test_structure_teams_message():
             assert output == json.dumps(expected)
 
 
-@mock_ssm
+@mock_aws
 def test_config():
     ssm = boto3.client('ssm', region_name='us-east-1')
     path = "/dev/digitized_av_trigger"
