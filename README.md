@@ -9,6 +9,12 @@ With [git](https://git-scm.com/) installed, pull down the source code and move i
 git clone https://github.com/RockefellerArchiveCenter/digitized_image_notifications.git
 cd digitized_image_notifications
 ```
+## Serice Flow
+
+The service processes requests as follows:
+- Parses the message body and attributes
+- Structures the message for Teams
+- Sends the message to Teams
 
 ## Usage
 
