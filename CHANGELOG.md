@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.1](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/compare/v1.0.0...v1.0.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* pip and deps ([e452a7d](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/e452a7d1093d67aa23611068f542361ffb2e940e))
+* pip and deps ([e452a7d](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/e452a7d1093d67aa23611068f542361ffb2e940e))
+* pip and deps ([2f98d3d](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/2f98d3d804d66cb03a17e06db4492f236680dda6))
+* pip and deps ([2f98d3d](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/2f98d3d804d66cb03a17e06db4492f236680dda6))
+* pip and deps ([3bda90d](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/3bda90dcfee2c206c38147b54124590b81fb58f1))
+
 ## 1.0.0 (2026-06-25)
 
 
