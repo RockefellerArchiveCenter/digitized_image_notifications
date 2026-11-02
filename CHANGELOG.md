@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.2](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/compare/v1.0.1...v1.0.2) (2026-11-02)
+
+
+### Bug Fixes
+
+* **deps:** Scheduled dependency updates ([3cf7494](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/3cf74947b179a2e55011a09514f7170d4e0ffa78))
+* **deps:** Scheduled dependency updates ([3cf7494](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/3cf74947b179a2e55011a09514f7170d4e0ffa78))
+* **deps:** Scheduled dependency updates ([1d15d6e](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/1d15d6ea59a8255ad428a80d7e161f27e0e1c0db))
+* **deps:** Scheduled dependency updates ([1d15d6e](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/1d15d6ea59a8255ad428a80d7e161f27e0e1c0db))
+* **deps:** Scheduled dependency updates ([1e9c83c](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/commit/1e9c83c64ca61b87e4bd2ebd89f7ea9a9233919a))
+
 ## [1.0.1](https://github.com/RockefellerArchiveCenter/digitized_image_notifications/compare/v1.0.0...v1.0.1) (2026-10-21)
 
 
